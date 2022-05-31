@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./component/Home";
 import { Route, Routes } from "react-router-dom";
 import Form from "./component/Form";
+import UpdateDetails from "./component/UpdateDetails";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="form" element={<Form />} />
+        <Route path="update/:id" element={<UpdateDetails />} />
       </Routes>
     </div>
   );

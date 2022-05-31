@@ -1,5 +1,9 @@
-import { GET_DETAILS, POST_DETAILS } from "../type";
-import { GetApiDetails, PostApiDetails } from "../../api/axiosRequest";
+import { GET_DETAILS, POST_DETAILS, UPDATE_DETAILS } from "../type";
+import {
+  GetApiDetails,
+  PostApiDetails,
+  UpdateApiDetails,
+} from "../../api/axiosRequest";
 
 const GetApiAction = () => {
   return function (dispatch) {
@@ -28,5 +32,21 @@ const PostApiAction = (request) => {
     });
   };
 };
+const UpdateApiAction = (request, id) => {
+  return function (dispatch) {
+    dispatch({
+      type: UPDATE_DETAILS,
+      payload: false,
+    });
+    return UpdateApiDetails(request, id).then((res) => {
+      console.log(res);
 
-export { GetApiAction, PostApiAction };
+      dispatch({
+        type: UPDATE_DETAILS,
+        payload: true,
+      });
+    });
+  };
+};
+
+export { GetApiAction, PostApiAction, UpdateApiAction };

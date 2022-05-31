@@ -1,4 +1,4 @@
-import { GET_DETAILS, POST_DETAILS } from "../type";
+import { GET_DETAILS, POST_DETAILS, UPDATE_DETAILS } from "../type";
 
 const initialState = {
   details: [],
@@ -14,6 +14,11 @@ const Reducer = (state = initialState, action) => {
     case POST_DETAILS:
       return {
         isResponse: action.payload,
+      };
+
+    case UPDATE_DETAILS:
+      return {
+        updateResponse: action.payload,
       };
 
     default:

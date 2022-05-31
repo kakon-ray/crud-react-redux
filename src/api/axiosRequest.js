@@ -32,4 +32,16 @@ const PostApiDetails = (data) => {
   return AxiosRequest("http://localhost:3000/details", "POST", headers, data);
 };
 
-export { GetApiDetails, PostApiDetails };
+const UpdateApiDetails = (data, id) => {
+  const headers = {
+    "content-type": "application/json",
+  };
+  return AxiosRequest(
+    "http://localhost:3000/details/" + id,
+    "PUT",
+    headers,
+    data
+  );
+};
+
+export { GetApiDetails, PostApiDetails, UpdateApiDetails };
