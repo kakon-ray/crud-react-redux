@@ -1,6 +1,12 @@
-import { GET_DETAILS, POST_DETAILS, UPDATE_DETAILS } from "../type";
+import {
+  GET_DETAILS,
+  POST_DETAILS,
+  UPDATE_DETAILS,
+  GET_DETAILSBYID,
+} from "../type";
 import {
   GetApiDetails,
+  GetApiDetailsById,
   PostApiDetails,
   UpdateApiDetails,
 } from "../../api/axiosRequest";
@@ -10,6 +16,17 @@ const GetApiAction = () => {
     return GetApiDetails().then((res) => {
       dispatch({
         type: GET_DETAILS,
+        payload: res.data,
+      });
+    });
+  };
+};
+
+const GetApiActionById = (id) => {
+  return function (dispatch) {
+    return GetApiDetailsById(id).then((res) => {
+      dispatch({
+        type: GET_DETAILSBYID,
         payload: res.data,
       });
     });
@@ -49,4 +66,4 @@ const UpdateApiAction = (request, id) => {
   };
 };
 
-export { GetApiAction, PostApiAction, UpdateApiAction };
+export { GetApiAction, GetApiActionById, PostApiAction, UpdateApiAction };

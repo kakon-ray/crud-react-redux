@@ -1,4 +1,9 @@
-import { GET_DETAILS, POST_DETAILS, UPDATE_DETAILS } from "../type";
+import {
+  GET_DETAILS,
+  POST_DETAILS,
+  UPDATE_DETAILS,
+  GET_DETAILSBYID,
+} from "../type";
 
 const initialState = {
   details: [],
@@ -9,6 +14,10 @@ const Reducer = (state = initialState, action) => {
     case GET_DETAILS:
       return {
         details: action.payload,
+      };
+    case GET_DETAILSBYID:
+      return {
+        detailsById: action.payload,
       };
 
     case POST_DETAILS:

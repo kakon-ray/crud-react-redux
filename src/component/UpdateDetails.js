@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { UpdateApiAction } from "../redux/action/action";
+import { UpdateApiAction, GetApiActionById } from "../redux/action/action";
 import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
 
@@ -13,16 +13,34 @@ const UpdateDetails = () => {
 
   const { id } = useParams();
 
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/details/" + id)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setName(data.name);
+  //       setEmail(data.email);
+  //       setPhone(data.phone);
+  //       setAddress(data.country);
+  //     });
+  // }, []);
+
+  // get data spesific id by redux actiona and axios
   useEffect(() => {
-    fetch("http://localhost:3000/details/" + id)
-      .then((res) => res.json())
-      .then((data) => {
-        setName(data.name);
-        setEmail(data.email);
-        setPhone(data.phone);
-        setAddress(data.country);
-      });
-  }, []);
+    dispatch(GetApiActionById(id));
+  }, [dispatch]);
+
+  const responseDataById = useSelector((state) => state.Reducer.detailsById);
+
+  console.log("==========", responseDataById);
+
+  useEffect(() => {
+    if (responseDataById) {
+      setName(responseDataById.name);
+      setEmail(responseDataById.email);
+      setPhone(responseDataById.phone);
+      setAddress(responseDataById.country);
+    }
+  }, [responseDataById]);
 
   const updateResponse = useSelector((state) => state.Reducer.updateResponse);
 

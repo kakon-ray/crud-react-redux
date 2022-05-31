@@ -24,6 +24,17 @@ const GetApiDetails = () => {
   };
   return AxiosRequest("http://localhost:3000/details", "GET", headers, {});
 };
+const GetApiDetailsById = (id) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return AxiosRequest(
+    "http://localhost:3000/details/" + id,
+    "GET",
+    headers,
+    {}
+  );
+};
 
 const PostApiDetails = (data) => {
   const headers = {
@@ -44,4 +55,4 @@ const UpdateApiDetails = (data, id) => {
   );
 };
 
-export { GetApiDetails, PostApiDetails, UpdateApiDetails };
+export { GetApiDetails, GetApiDetailsById, PostApiDetails, UpdateApiDetails };
