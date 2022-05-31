@@ -3,6 +3,7 @@ import {
   POST_DETAILS,
   UPDATE_DETAILS,
   GET_DETAILSBYID,
+  DELETE_DETAILS,
 } from "../type";
 
 const initialState = {
@@ -28,6 +29,10 @@ const Reducer = (state = initialState, action) => {
     case UPDATE_DETAILS:
       return {
         updateResponse: action.payload,
+      };
+    case DELETE_DETAILS:
+      return {
+        deleteResponse: action.payload,
       };
 
     default:

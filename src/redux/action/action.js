@@ -3,12 +3,14 @@ import {
   POST_DETAILS,
   UPDATE_DETAILS,
   GET_DETAILSBYID,
+  DELETE_DETAILS,
 } from "../type";
 import {
   GetApiDetails,
   GetApiDetailsById,
   PostApiDetails,
   UpdateApiDetails,
+  DeleteApiDetails,
 } from "../../api/axiosRequest";
 
 const GetApiAction = () => {
@@ -65,5 +67,27 @@ const UpdateApiAction = (request, id) => {
     });
   };
 };
+const DeleteApiAction = (id) => {
+  return function (dispatch) {
+    dispatch({
+      type: DELETE_DETAILS,
+      payload: false,
+    });
+    return DeleteApiDetails(id).then((res) => {
+      console.log(res);
 
-export { GetApiAction, GetApiActionById, PostApiAction, UpdateApiAction };
+      dispatch({
+        type: DELETE_DETAILS,
+        payload: true,
+      });
+    });
+  };
+};
+
+export {
+  GetApiAction,
+  GetApiActionById,
+  PostApiAction,
+  UpdateApiAction,
+  DeleteApiAction,
+};

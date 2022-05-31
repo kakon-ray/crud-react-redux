@@ -54,5 +54,22 @@ const UpdateApiDetails = (data, id) => {
     data
   );
 };
+const DeleteApiDetails = (id) => {
+  const headers = {
+    "content-type": "application/json",
+  };
+  return AxiosRequest(
+    "http://localhost:3000/details/" + id,
+    "DELETE",
+    headers,
+    {}
+  );
+};
 
-export { GetApiDetails, GetApiDetailsById, PostApiDetails, UpdateApiDetails };
+export {
+  GetApiDetails,
+  GetApiDetailsById,
+  PostApiDetails,
+  UpdateApiDetails,
+  DeleteApiDetails,
+};
