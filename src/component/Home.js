@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import Action from "../redux/action/action";
+import { GetApiAction } from "../redux/action/action";
 import { useDispatch, useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
+import Form from "./Form";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ const Home = () => {
   console.log("==========", responseData);
 
   useEffect(() => {
-    dispatch(Action());
+    dispatch(GetApiAction());
   }, [dispatch]);
 
   const result = responseData.map((item) => {
@@ -19,6 +20,7 @@ const Home = () => {
         <td>{item.id}</td>
         <td>{item.name}</td>
         <td>{item.email}</td>
+        <td>{item.phone}</td>
         <td>{item.country}</td>
       </tr>
     );
@@ -31,6 +33,7 @@ const Home = () => {
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Phone</th>
             <th>Country</th>
           </tr>
         </thead>

@@ -1,4 +1,4 @@
-import { GET_DETAILS } from "../type";
+import { GET_DETAILS, POST_DETAILS } from "../type";
 
 const initialState = {
   details: [],

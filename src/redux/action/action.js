@@ -1,7 +1,7 @@
-import { GET_DETAILS } from "../type";
-import GetApiDetails from "../../api/axiosRequest";
+import { GET_DETAILS, POST_DETAILS } from "../type";
+import { GetApiDetails, PostApiDetails } from "../../api/axiosRequest";
 
-const Actions = () => {
+const GetApiAction = () => {
   return function (dispatch) {
     return GetApiDetails().then((res) => {
       dispatch({
@@ -12,4 +12,16 @@ const Actions = () => {
   };
 };
 
-export default Actions;
+const PostApiAction = (request) => {
+  return function (dispatch) {
+    return PostApiDetails(request).then((res) => {
+      console.log(res);
+      dispatch({
+        type: POST_DETAILS,
+        payload: "",
+      });
+    });
+  };
+};
+
+export { GetApiAction, PostApiAction };

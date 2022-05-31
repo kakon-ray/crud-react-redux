@@ -1,28 +1,35 @@
 import axios from "axios";
 
-export async function axiosRequest(url, mathods, headers, params) {
+export async function AxiosRequest(url, method, headers, params) {
   return params
     ? axios({
         url: url,
-        mathods: mathods,
+        method: method,
         headers: headers,
         data: params,
         timeout: 1000,
       })
     : axios({
         url: url,
-        mathods: mathods,
+        method: method,
         headers: headers,
-        data: params,
+        data: {},
         timeout: 1000,
       });
 }
 
 const GetApiDetails = () => {
   const headers = {
-    "content-type": "application/json",
+    "Content-Type": "application/json",
   };
-  return axiosRequest("http://localhost:3000/details", "GET", headers, {});
+  return AxiosRequest("http://localhost:3000/details", "GET", headers, {});
 };
 
-export default GetApiDetails;
+const PostApiDetails = (data) => {
+  const headers = {
+    "content-type": "application/json",
+  };
+  return AxiosRequest("http://localhost:3000/details", "POST", headers, data);
+};
+
+export { GetApiDetails, PostApiDetails };
