@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { PostApiAction } from "../redux/action/action";
+import Swal from "sweetalert2";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -9,12 +10,22 @@ const Form = () => {
   const [phone, setPhone] = useState("");
   const [country, setAddress] = useState("");
 
+  const responseData = useSelector((state) => state.Reducer.isResponse);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const addValue = { name, email, phone, country };
 
     dispatch(PostApiAction(addValue));
+
+    console.log(responseData);
+    if (responseData) {
+      Swal.fire({
+        icon: "success",
+        title: "Post Successd",
+      });
+    }
   };
   return (
     <div className="mx-5">

@@ -14,11 +14,16 @@ const GetApiAction = () => {
 
 const PostApiAction = (request) => {
   return function (dispatch) {
+    dispatch({
+      type: POST_DETAILS,
+      payload: false,
+    });
     return PostApiDetails(request).then((res) => {
       console.log(res);
+
       dispatch({
         type: POST_DETAILS,
-        payload: "",
+        payload: true,
       });
     });
   };

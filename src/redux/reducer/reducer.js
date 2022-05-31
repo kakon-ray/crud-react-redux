@@ -11,6 +11,11 @@ const Reducer = (state = initialState, action) => {
         details: action.payload,
       };
 
+    case POST_DETAILS:
+      return {
+        isResponse: action.payload,
+      };
+
     default:
       return state;
   }

@@ -6,7 +6,7 @@ import Form from "./Form";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const responseData = useSelector((state) => state.reducer.details);
+  const responseData = useSelector((state) => state.Reducer.details);
 
   console.log("==========", responseData);
 
